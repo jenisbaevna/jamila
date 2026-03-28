@@ -4,18 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+  
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+
     <ul>
         {% for oqiwshi in students %}
         <li>{{oqiwshi}} {{oqiwshi.age}} {{oqiwshi.phone_num}}</li>
         {% endfor %}
     </ul>
-    {% for telefon in telefonlar %}
-    <h1>{{telefon.model}}</h1>
-    <p>{{telefon.price}}</p>
-    <img src="{{telefon.photo.url}}" alt="">
-    {% endfor %}
-    <h1>ozgeris kirdi</h1>
+    
+    
+    <section class="text-gray-600 body-font">
+      
+      <div class="container px-5 py-24 mx-auto">
+        
+        <div class="flex flex-wrap -m-4">
+
+          {% for telefon in telefonlar %}
+          <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+            <a class="block relative h-48 rounded overflow-hidden" href="{% url 'podrobnee' telefon.id %}">
+              <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="{{telefon.photo.url}}">
+            </a>
+            <div class="mt-4">
+              <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
+              <h2 class="text-gray-900 title-font text-lg font-medium">{{telefon.model}}</h2>
+              <p class="mt-1">${{telefon.price}}</p>
+            </div>
+          </div>
+          {% endfor %}
+          
+        </div>
+      
+      </div>
+      
+    </section>
+
 </body>
 </html>
